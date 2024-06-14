@@ -1,0 +1,63 @@
+Endpoints
+Autenticación
+Iniciar Sesión
+Método: POST
+Ruta: /login
+Descripción: Permite a los usuarios iniciar sesión en la aplicación.
+Parámetros de la solicitud:
+email (string): El correo electrónico del usuario.
+password (string): La contraseña del usuario.
+Respuestas:
+Código 200: La autenticación fue exitosa.
+Código 401: Las credenciales proporcionadas son incorrectas.
+Cerrar Sesión
+Método: GET
+Ruta: /logout
+Descripción: Cierra la sesión actual del usuario.
+Historiales Médicos
+Listar Historiales Médicos
+Método: GET
+Ruta: /historialesmedicos
+Descripción: Obtiene todos los historiales médicos del médico actualmente autenticado.
+Parámetros de la solicitud: Ninguno.
+Respuestas:
+Código 200: La solicitud fue exitosa. Devuelve una lista de historiales médicos.
+Código 401: El usuario no está autenticado.
+Crear Nuevo Historial Médico
+Método: POST
+Ruta: /historialesmedicos
+Descripción: Crea un nuevo historial médico para un paciente.
+Parámetros de la solicitud:
+PacienteID (int): El ID del paciente asociado con el historial médico.
+Fecha (string): La fecha del historial médico en formato 'YYYY-MM-DD'.
+Diagnostico (string): El diagnóstico del paciente.
+Tratamiento (string): El tratamiento prescrito para el paciente.
+Respuestas:
+Código 201: El historial médico fue creado exitosamente.
+Código 400: Los datos proporcionados son inválidos o están incompletos.
+Código 401: El usuario no está autenticado.
+Editar Historial Médico
+Método: PUT
+Ruta: /historialesmedicos/:id
+Descripción: Edita un historial médico existente.
+Parámetros de la solicitud:
+id (int): El ID del historial médico que se va a editar.
+PacienteID (int): El nuevo ID del paciente asociado con el historial médico.
+Fecha (string): La nueva fecha del historial médico en formato 'YYYY-MM-DD'.
+Diagnostico (string): El nuevo diagnóstico del paciente.
+Tratamiento (string): El nuevo tratamiento prescrito para el paciente.
+Respuestas:
+Código 200: El historial médico fue editado exitosamente.
+Código 400: Los datos proporcionados son inválidos o están incompletos.
+Código 401: El usuario no está autenticado.
+Eliminar Historial Médico
+Método: DELETE
+Ruta: /historialesmedicos/:id
+Descripción: Elimina un historial médico existente.
+Parámetros de la solicitud:
+id (int): El ID del historial médico que se va a eliminar.
+Respuestas:
+Código 204: El historial médico fue eliminado exitosamente.
+Código 401: El usuario no está autenticado.
+Autorización
+La API utiliza un sistema de autenticación basado en sesiones y roles de usuario. Algunos endpoints requieren que el usuario esté autenticado y tenga permisos específicos para acceder a ellos.

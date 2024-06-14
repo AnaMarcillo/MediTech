@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historiales Médicos</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Historiales Médicos</h1>
+    <a href="/historialesmedicos/create">Crear Nuevo Historial Médico</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Paciente ID</th>
+                <th>Fecha</th>
+                <th>Diagnóstico</th>
+                <th>Tratamiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% historiales.forEach(historial => { %>
+                <tr>
+                    <td><%= historial.PacienteID %></td>
+                    <td><%= historial.Fecha %></td>
+                    <td><%= historial.Diagnostico %></td>
+                    <td><%= historial.Tratamiento %></td>
+                    <td>
+                        <a href="/historialesmedicos/<%= historial.ID %>/edit">Editar</a>
+                        <form action="/historialesmedicos/<%= historial.ID %>?_method=DELETE" method="POST" style="display:inline;">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>

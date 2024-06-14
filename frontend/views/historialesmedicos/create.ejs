@@ -1,0 +1,34 @@
+<!-- views/historialesmedicos/create.ejs -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Historial Médico</title>
+</head>
+<body>
+    <h1>Crear Historial Médico</h1>
+
+    <form action="/historialesmedicos" method="POST">
+        <label for="paciente">Selecciona un paciente:</label>
+        <select name="PacienteID" id="paciente">
+            <% pacientes.forEach(paciente => { %>
+                <option value="<%= paciente.UserID %>"><%= paciente.Nombre %></option>
+            <% }) %>
+        </select><br><br>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="Fecha"><br><br>
+
+        <label for="diagnostico">Diagnóstico:</label><br>
+        <textarea id="diagnostico" name="Diagnostico" rows="4" cols="50"></textarea><br><br>
+
+        <label for="tratamiento">Tratamiento:</label><br>
+        <textarea id="tratamiento" name="Tratamiento" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit">Crear Historial Médico</button>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Medical History</title>
+</head>
+<body>
+    <h1>Edit Medical History</h1>
+    <form action="/historialesmedicos/<%= historial.HistorialID %>" method="POST">
+        <label for="PacienteID">Patient:</label>
+        <select id="PacienteID" name="PacienteID" required>
+            <% pacientes.forEach(paciente => { %>
+                <option value="<%= paciente.PacienteID %>" <%= historial.PacienteID === paciente.PacienteID ? 'selected' : '' %>><%= paciente.Nombre %></option>
+            <% }); %>
+        </select>
+
+        <label for="Fecha">Date:</label>
+        <input type="date" id="Fecha" name="Fecha" value="<%= historial.Fecha %>" required>
+
+        <label for="Diagnostico">Diagnosis:</label>
+        <input type="text" id="Diagnostico" name="Diagnostico" value="<%= historial.Diagnostico %>" required>
+
+        <label for="Tratamiento">Treatment:</label>
+        <input type="text" id="Tratamiento" name="Tratamiento" value="<%= historial.Tratamiento %>" required>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
